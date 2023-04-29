@@ -1,0 +1,94 @@
+POST: /producto
+addProdController (routes.js)
+curl --location 'http://localhost:8080/api/producto' \
+--header 'Content-Type: application/json' \
+--data '{
+    "nombre": "Tijera corta uñas roedores huron cobayo conejo",
+    "marca": "Living world",
+    "tamaño": "10x7",
+    "precio": 991,
+    "categoria": "Higiene",
+    "especie": "Pequeñas mascotas"
+}'
+
+--------
+
+GET: /producto
+getAllProdController (routes.js)
+curl --location 'localhost:8080/api/producto'
+
+--------
+
+GET: /producto/:id
+prodById
+curl --location 'localhost:8080/api/producto/6441a992a61d6f7f889877f4'
+
+--------
+
+PUT: /producto/:id
+updateProduct
+curl --location --request PUT 'localhost:8080/api/producto/6441a992a61d6f7f889877f0' \
+--header 'Content-Type: application/json' \
+--data '{
+    "nombre": "Heno en cubos conejos cobayos hamster",
+    "marca": "Zootec",
+    "peso": "500 Grs",
+    "precio": 750,
+    "categoria": "Alimentos",
+    "especie": "Pequeñas mascotas"
+}'
+
+---------
+
+GET: /producto/:id
+prodById (producto actualizado)
+curl --location --request GET 'localhost:8080/api/producto/6441a992a61d6f7f889877f0' \
+--header 'Content-Type: application/json' \
+--data '{
+    "nombre": "Heno en cubos conejos cobayos hamster",
+    "marca": "Zootec",
+    "peso": "500 Grs",
+    "precio": 750,
+    "categoria": "Alimentos",
+    "especie": "Pequeñas mascotas"
+}'
+
+--------
+
+DELETE: /producto/:id
+curl --location --request DELETE 'localhost:8080/api/producto/6441a992a61d6f7f889877f1' \
+--data ''
+
+---------
+
+uso de EXPRESS-VALIDATOR de POST y PUT
+curl --location 'http://localhost:8080/api/producto' \
+--header 'Content-Type: application/json' \
+--data '{
+    "nombre": "Tijera para pequeños mamiferos",
+    "marca": "Living world",
+    "tamaño": "10x7",
+    "categoria": "Higiene",
+    "precio": "precio",
+    "especie": 123
+}'
+
+---------
+
+MIDDLEWARE propio
+curl --location 'http://localhost:8080/api/producto' \
+--header 'Content-Type: application/json' \
+--data '{
+    "nombre": "Tijera para pequeños mamifs",
+    "marca": "Living world",
+    "tamaño": "10x7",
+    "categoria": "Higiene",
+    "precio": 1000,
+    "especie": "Pequeñas mascotas"
+}'
+
+---------
+
+GET: /api/datos/gatos   (API EXTERNA) 
+curl --location 'localhost:8080/api/datos/gatos' \
+--data ''
